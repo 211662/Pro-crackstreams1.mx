@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://crackstreams1.mx/sitemap.xml
