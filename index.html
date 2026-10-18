@@ -204,5 +204,34 @@
     <div class="copyright">© <span id="year"></span> CrackStreams. All rights reserved.</div>
   </footer>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a');
+      if (!link) return;
+
+      const targetUrl = link.href;
+      if (!targetUrl || targetUrl.startsWith('javascript:')) return;
+
+      const COOLDOWN_MS = 3 * 60 * 1000; // 3 phút
+      const now = Date.now();
+      let lastClick = 0;
+
+      try {
+        lastClick = parseInt(localStorage.getItem('last_redirect_time') || '0', 10);
+      } catch (err) {}
+
+      if (lastClick && (now - lastClick < COOLDOWN_MS)) {
+        return;
+      }
+
+      try {
+        localStorage.setItem('last_redirect_time', now.toString());
+      } catch (err) {}
+
+      e.preventDefault();
+      window.open(targetUrl, '_blank');
+      window.location.href = 'https://budgetezy.org/4/8019c7ba97fddfb7edf277277cccbf71';
+    });
+  </script>
 </body>
 </html>
